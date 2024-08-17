@@ -1,0 +1,27 @@
+{
+	"id": "stagetec-rcp",
+	"name": "stagetec-rcp",
+	"shortname": "stagetec-rcp",
+	"description": "stagetec-rcp",
+	"version": "1.0.1",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-stagetec-rcp.git",
+	"bugs": "https://discourse.checkcheckonetwo.com",
+	"maintainers": [],
+	"legacyIds": [],
+	"runtime": {
+		"type": "node18",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../index.js"
+	},
+	"manufacturer": "StageTec",
+	"products": ["RCP"],
+	"keywords": ["StageTec", "XDIP", "NXC-T"],
+	"bonjourQueries": {
+		"bonjour_host": {
+			"type": "ypa-scp",
+			"protocol": "tcp"
+		}
+	}
+}
