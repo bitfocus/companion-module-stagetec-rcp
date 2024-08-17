@@ -7,7 +7,7 @@ const { InstanceBase, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@
 const paramFuncs = require('./paramFuncs')
 const actionFuncs = require('./actions.js')
 const varFuncs = require('./variables.js')
-const upgrade = require('./upgrade')
+const upgrades = require('./upgrades')
 
 const RCP_PORT = 49280
 const MSG_DELAY = 5
@@ -483,4 +483,4 @@ class instance extends InstanceBase {
 	}
 }
 
-runEntrypoint(instance, upgrade)
+runEntrypoint(instance, upgrades)
