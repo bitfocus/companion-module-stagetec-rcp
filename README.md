@@ -5,6 +5,8 @@
 - XDIP
 - Nexus Compact
 
+Requires the CL/QL control licence. 
+
 **Available commands**
 
 - Selected "set" commands

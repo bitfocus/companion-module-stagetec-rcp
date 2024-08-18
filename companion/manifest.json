@@ -3,7 +3,7 @@
 	"name": "stagetec-rcp",
 	"shortname": "stagetec-rcp",
 	"description": "stagetec-rcp",
-	"version": "1.0.1",
+	"version": "0.0.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-stagetec-rcp.git",
 	"bugs": "https://discourse.checkcheckonetwo.com",
@@ -16,8 +16,8 @@
 		"entrypoint": "../index.js"
 	},
 	"manufacturer": "StageTec",
-	"products": ["RCP"],
-	"keywords": ["StageTec", "XDIP", "NXC-T"],
+	"products": ["RCP", "XDIP", "NXC-T"],
+	"keywords": ["StageTec", "XDIP", "NXC-T", "Nexus"],
 	"bonjourQueries": {
 		"bonjour_host": {
 			"type": "ypa-scp",
