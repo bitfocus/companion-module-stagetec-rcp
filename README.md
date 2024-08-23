@@ -5,11 +5,11 @@
 - XDIP
 - Nexus Compact
 
-Requires the CL/QL control licence. 
+Requires the CL/QL control licence.
 
 **Available commands**
 
-- Selected "set" commands
+- Microphone Input Gain, P48, HPF
 
 Please visit http://discourse.checkcheckonetwo.com for help, discussions, suggestions, etc.
 

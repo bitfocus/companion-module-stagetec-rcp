@@ -7,7 +7,16 @@
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-stagetec-rcp.git",
 	"bugs": "https://discourse.checkcheckonetwo.com",
-	"maintainers": [],
+	"maintainers": [
+		{
+			"name": "Andrew Broughton",
+			"email": "andy@checkcheckonetwo.com"
+		},
+		{
+			"name": "Phillip Ivan Pietruschka",
+			"email": "ivanpietruschka@gmail.com"
+		}
+	],
 	"legacyIds": [],
 	"runtime": {
 		"type": "node18",
@@ -16,8 +25,8 @@
 		"entrypoint": "../index.js"
 	},
 	"manufacturer": "StageTec",
-	"products": ["RCP", "XDIP", "NXC-T"],
-	"keywords": ["StageTec", "XDIP", "NXC-T", "Nexus"],
+	"products": ["XDIP", "NXC-T"],
+	"keywords": ["Dante", "Yamaha", "Nexus", "RCP"],
 	"bonjourQueries": {
 		"bonjour_host": {
 			"type": "ypa-scp",
