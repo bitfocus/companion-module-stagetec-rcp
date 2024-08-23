@@ -21,7 +21,7 @@ module.exports = {
 				fname = 'XDIP Parameters-1.txt'
 				break
 			case 'NXC-T':
-				fname = 'Rivage Parameters-3.txt'
+				fname = 'XDIP Parameters-1.txt'
 				break
 		}
 
@@ -198,7 +198,7 @@ module.exports = {
 			if (!config.metering) return
 			cmdStart = 'mtrstart'
 			cmdName = cmdName.replace('/Meter', '') // Remove "Meter" from the beginning of the command
-			if (config.model == 'TIO' || config.model == 'RIO' || config.model == 'RSIO') {
+			if (config.model == 'XDIP') {
 				cmdName = cmdName.replace(/\/.*Ch/, '/Dev')
 			}
 			if (rcpCmd.Pickoff) {
