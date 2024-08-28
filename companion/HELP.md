@@ -1,4 +1,4 @@
-## StageTec Remote Control - v1.0.1
+## StageTec Remote Control - v1.0.2
 
 Please visit https://discourse.checkcheckonetwo.com for help, discussions, suggestions, etc.
 

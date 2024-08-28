@@ -303,16 +303,8 @@ module.exports = {
 		if (cmdName != undefined) {
 			if (cmdAction == 'mtr') {
 				cmdName = cmdName.replace('Current/', 'Current/Meter/')
-
-				if (config.model == 'TIO' || config.model == 'RIO') {
-					cmdName = cmdName.replace('/Dev/OutputLevel', '/OutCh/OutputLevel')
-					cmdName = cmdName.replace(/\/Dev.*/, config.model == 'TIO' ? '/InCh/InputLevel' : '/InCh')
-				} else if (config.model == 'RSIO') {
-					cmdName = cmdName.replace('/Dev', cmdName.includes('InputLevel') ? '/InCh' : '/OutCh')
-				} else {
-					let lastSlash = cmdName.lastIndexOf('/')
-					cmdName = cmdName.slice(0, lastSlash)
-				}
+				cmdName = cmdName.replace('/Dev/OutputLevel', '/OutCh/OutputLevel')
+				cmdName = cmdName.replace('/Dev/InputLevel', '/InCh/InputLevel')
 			}
 			let cmdToFind = cmdName.replace(/:/g, '_')
 			rcpCmd = rcpCommands.find((cmd) => cmd.Address.replace(/:/g, '_').startsWith(cmdToFind))
