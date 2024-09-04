@@ -62,26 +62,7 @@ module.exports = {
 				useVariables: true,
 				allowCustom: true,
 			}
-			if ((config.model == 'TF' || config.model == 'DM3' || config.model == 'DM7') && rcpCmd.Index >= 1000 && rcpCmd.Index < 1010) {
-				YOpts = {
-					...YOpts,
-					type: 'dropdown',
-					choices: [
-						{ id: 1, label: 'A' },
-						{ id: 2, label: 'B' },
-					],
-				}
-			} else if (actionNameParts[0] == 'Cue') {
-				YOpts = {
-					...YOpts,
-					label: 'Cue Bus',
-					type: 'dropdown',
-					choices: [
-						{ id: 1, label: 'A' },
-						{ id: 2, label: 'B' },
-					],
-				}
-			} else if (rcpCmd.Type == 'mtr') {
+			if (rcpCmd.Type == 'mtr') {
 				YOpts.type = 'dropdown'
 				let pickoffs = rcpCmd.Pickoff?.split('|')
 				if (pickoffs) {
@@ -160,16 +141,8 @@ module.exports = {
 
 			case 'string':
 			case 'binary':
-				if (actionName.startsWith('CustomFaderBank')) ValOpts.choices = rcpNames.customChNames
-				else if (actionName.endsWith('Color')) ValOpts.choices = config.model == 'TF' ? rcpNames.chColorsTF : rcpNames.chColors
-				else if (actionName.endsWith('Icon')) ValOpts.choices = rcpNames.chIcons
-				
-				else if (rcpNames[actionName] !== undefined) ValOpts.choices = rcpNames[actionName]
-
-				else if ((config.model == 'PM' || config.model == 'DM7') && rcpCmd.Index >= 1000 && rcpCmd.Index < 1010) {
-					ValOpts = { ...ValOpts, type: 'textinput', regex: '/^([1-9][0-9]{0,2})\\.[0-9][0-9]$/' }
-				} else {
-					ValOpts = { ...ValOpts, type: 'textinput', regex: '' }
+				if (rcpNames[actionName] !== undefined) {
+					ValOpts.choices = rcpNames[actionName]
 				}
 				paramsToAdd.push(ValOpts)
 		}

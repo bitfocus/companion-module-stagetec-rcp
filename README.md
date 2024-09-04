@@ -19,6 +19,10 @@ _Andrew Broughton_
 
 **REVISION HISTORY**
 
+1.0.3
+
+- Remove unused Variables
+
 1.0.1
 
 - Minor Cleanup

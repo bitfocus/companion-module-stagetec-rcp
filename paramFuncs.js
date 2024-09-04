@@ -161,38 +161,6 @@ module.exports = {
 		let cmdStart = prefix
 		let options = { X: cmdToFmt.X, Y: cmdToFmt.Y, Val: cmdToFmt.Val }
 
-		if (rcpCmd.Index >= 1000 && rcpCmd.Index < 1010) {
-			cmdStart = prefix == 'set' ? 'ssrecall' : 'sscurrent'
-			if (rcpCmd.Index == 1001) cmdStart = 'ssupdate' // store command
-			switch (config.model) {
-				case 'TF':
-				case 'DM3':
-					cmdStart = cmdStart + '_ex'
-					cmdName = `scene_${options.Y == 0 ? 'a' : 'b'}`
-					break
-				case 'CL/QL':
-					cmdStart = cmdStart + '_ex'
-					cmdName = 'MIXER:Lib/Scene'
-					break
-				case 'PM':
-					cmdStart = cmdStart + 't_ex'
-					cmdName = 'MIXER:Lib/Scene'
-					break
-				case 'DM7':
-					cmdStart = cmdStart + 't_ex'
-					cmdName = `scene_${options.Y == 0 ? 'a' : 'b'}`
-			}
-			options.X = ''
-			options.Y = ''
-		}
-
-		if (rcpCmd.Index >= 1010 && rcpCmd.Index < 2000) {
-			// RecallInc/Dec
-			cmdStart = 'event'
-			options.X = ''
-			options.Y = ''
-		}
-
 		if (rcpCmd.Index >= 2000) {
 			// Meters
 			if (!config.metering) return
