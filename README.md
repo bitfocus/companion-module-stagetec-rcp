@@ -1,4 +1,4 @@
-## StageTec Remote Control Protocol 1.0.2 - for Companion v3
+## StageTec Remote Control Protocol 1.0.3 - for Companion v3
 
 **Available for the following StageTec Pro Audio Devices**
 

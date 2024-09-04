@@ -1,6 +1,6 @@
 // Control module for StageTec Pro Audio
 // Andrew Broughton <andy@checkcheckonetwo.com>
-// Aug 2024 Version 1.0.2 (for Companion v3)
+// Sept 2024 Version 1.0.3 (for Companion v3)
 
 const { InstanceBase, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
 
