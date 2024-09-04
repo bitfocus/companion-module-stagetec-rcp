@@ -36,3 +36,6 @@ In both instances it is reccomneded to locate both the Dante and Control (XACI) 
 
 > Use **@(internal:custom_MyCustomVar)** in the value field to update a custom variable within a feedback. Custom variable must already exist
 
+**LEVEL METER FEEDBACKS**
+
+For consistency with other RCP controlled devices, the input/output nomenclature is from the perspective of a connected console. Ergo a Nexus microphone input, routed to an XDIP Dante Output, is an **Input Channel**, and a console output routed to an XDIP Dante Input (and then on to another destination), is an **Output Channel**.
