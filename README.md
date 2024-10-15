@@ -23,10 +23,10 @@ _Andrew Broughton_
 
 - Remove unused Variables
 
-1.0.1
+  1.0.1
 
 - Minor Cleanup
 
-1.0.0
+  1.0.0
 
 - Initial Build

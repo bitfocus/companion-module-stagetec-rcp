@@ -120,11 +120,11 @@ class instance extends InstanceBase {
 				default: 10,
 				min: 1,
 				max: kaMax,
-
 			},
 			{
 				type: 'static-text',
-				label: '**NOTE** KeepAlive will attempt to keep the connection alive by regularly sending an innocuous message to the device.',
+				label:
+					'**NOTE** KeepAlive will attempt to keep the connection alive by regularly sending an innocuous message to the device.',
 				width: 12,
 			},
 		]
@@ -261,7 +261,7 @@ class instance extends InstanceBase {
 			(c) =>
 				c.prefix == cmdToAdd.prefix &&
 				c.Address == cmdToAdd.Address &&
-				((c.X == cmdToAdd.X && c.Y == cmdToAdd.Y) || (rcpCmd.Action == 'mtrinfo' && c.Y == cmdToAdd.Y))
+				((c.X == cmdToAdd.X && c.Y == cmdToAdd.Y) || (rcpCmd.Action == 'mtrinfo' && c.Y == cmdToAdd.Y)),
 		)
 		if (i > -1) {
 			this.cmdQueue[i] = cmdToAdd // Replace queued message with new one
@@ -282,7 +282,7 @@ class instance extends InstanceBase {
 		if (this.cmdQueue == undefined || this.cmdQueue.length == 0) return
 		if (cmd != undefined) {
 			let i = this.cmdQueue.findIndex(
-				(c) => c.prefix == 'get' && c.Address == cmd.Address && c.X == cmd.X && c.Y == cmd.Y
+				(c) => c.prefix == 'get' && c.Address == cmd.Address && c.X == cmd.X && c.Y == cmd.Y,
 			)
 			if (i > -1) {
 				this.cmdQueue.splice(i, 1) // Got value from matching request so remove it!
@@ -395,7 +395,7 @@ class instance extends InstanceBase {
 				actionId: aId,
 				options: { X: cX, Y: cY, Val: cV },
 			},
-			`${aId} ${cX} ${cY}` // uniqueId to stop duplicates
+			`${aId} ${cX} ${cY}`, // uniqueId to stop duplicates
 		)
 	}
 
@@ -404,7 +404,7 @@ class instance extends InstanceBase {
 			c = c.trim()
 			this.log(
 				'debug',
-				`[${new Date().toJSON()}] Sending :    '${c}' to ${this.getVariableValue('modelName')} @ ${config.host}`
+				`[${new Date().toJSON()}] Sending :    '${c}' to ${this.getVariableValue('modelName')} @ ${config.host}`,
 			)
 
 			if (this.socket !== undefined && this.socket.isConnected) {

@@ -3,9 +3,9 @@ module.exports = {
 		instance.variables = [
 			{ variableId: 'modelName', name: 'Device Model Name' },
 			{ variableId: 'runMode', name: 'Device Run Mode' },
-			{ variableId: 'error', name: 'Device Status'},
+			{ variableId: 'error', name: 'Device Status' },
 		]
-	
+
 		instance.setVariableDefinitions(instance.variables)
 	},
 
