@@ -1,4 +1,4 @@
-## StageTec Remote Control - v1.0.3
+## StageTec Remote Control - v1.0.4
 
 Please visit https://discourse.checkcheckonetwo.com for help, discussions, suggestions, etc.
 
@@ -38,4 +38,4 @@ In both instances it is reccomneded to locate both the Dante and Control (XACI) 
 
 **LEVEL METER FEEDBACKS**
 
-For consistency with other RCP controlled devices, the input/output nomenclature is from the perspective of a connected console. Ergo a Nexus microphone input, routed to an XDIP Dante Output, is an **Input Channel**, and a console output routed to an XDIP Dante Input (and then on to another destination), is an **Output Channel**.
+For consistency with other RCP controlled devices, the input/output nomenclature is from the perspective of a connected console. Ergo a Nexus microphone input, routed to an XDIP Dante Output, is an **Input Channel**.
