@@ -1,4 +1,4 @@
-## StageTec Remote Control Protocol 1.0.3 - for Companion v3
+## StageTec Remote Control Protocol 1.0.4 - for Companion v3
 
 **Available for the following StageTec Pro Audio Devices**
 
@@ -19,14 +19,14 @@ _Andrew Broughton_
 
 **REVISION HISTORY**
 
-1.0.3
+1.0.4
 
-- Remove unused Variables
+- Remove unused Variables, more cleamup
 
-  1.0.1
+1.0.1
 
 - Minor Cleanup
 
-  1.0.0
+1.0.0
 
 - Initial Build
