@@ -2,7 +2,7 @@
 // Andrew Broughton <andy@checkcheckonetwo.com>
 // Sept 2024 Version 1.0.3 (for Companion v3)
 
-const { InstanceBase, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
+const { InstanceBase, InstanceStatus, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
 
 const paramFuncs = require('./paramFuncs')
 const actionFuncs = require('./actions.js')
@@ -21,7 +21,7 @@ class instance extends InstanceBase {
 
 	// Startup
 	async init(cfg) {
-		this.updateStatus('Starting')
+		this.updateStatus(InstanceStatus.Connecting, 'Starting')
 		global.config = cfg
 		global.rcpCommands = []
 		this.colorCommands = [] // Commands which have a color field
@@ -162,10 +162,12 @@ class instance extends InstanceBase {
 
 			this.socket.on('error', (err) => {
 				this.log('error', `Network error: ${err.message}`)
+				this.updateStatus(InstanceStatus.ConnectionFailure)
 			})
 
 			this.socket.on('connect', () => {
 				this.log('info', `Connected!`)
+				this.updateStatus(InstanceStatus.Ok)
 				clearInterval(this.meterTimer)
 				clearInterval(this.kaTimer)
 				varFuncs.getVars(this)
