@@ -2,7 +2,7 @@
 // Andrew Broughton <andy@checkcheckonetwo.com>
 // Sept 2024 Version 1.0.3 (for Companion v3)
 
-const { InstanceBase, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
+const { InstanceBase, InstanceStatus, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
 
 const paramFuncs = require('./paramFuncs')
 const actionFuncs = require('./actions.js')
@@ -21,7 +21,7 @@ class instance extends InstanceBase {
 
 	// Startup
 	async init(cfg) {
-		this.updateStatus('Starting')
+		this.updateStatus(InstanceStatus.Connecting, 'Starting')
 		global.config = cfg
 		global.rcpCommands = []
 		this.colorCommands = [] // Commands which have a color field
@@ -120,11 +120,11 @@ class instance extends InstanceBase {
 				default: 10,
 				min: 1,
 				max: kaMax,
-
 			},
 			{
 				type: 'static-text',
-				label: '**NOTE** KeepAlive will attempt to keep the connection alive by regularly sending an innocuous message to the device.',
+				label:
+					'**NOTE** KeepAlive will attempt to keep the connection alive by regularly sending an innocuous message to the device.',
 				width: 12,
 			},
 		]
@@ -162,10 +162,12 @@ class instance extends InstanceBase {
 
 			this.socket.on('error', (err) => {
 				this.log('error', `Network error: ${err.message}`)
+				this.updateStatus(InstanceStatus.ConnectionFailure)
 			})
 
 			this.socket.on('connect', () => {
 				this.log('info', `Connected!`)
+				this.updateStatus(InstanceStatus.Ok)
 				clearInterval(this.meterTimer)
 				clearInterval(this.kaTimer)
 				varFuncs.getVars(this)
@@ -261,7 +263,7 @@ class instance extends InstanceBase {
 			(c) =>
 				c.prefix == cmdToAdd.prefix &&
 				c.Address == cmdToAdd.Address &&
-				((c.X == cmdToAdd.X && c.Y == cmdToAdd.Y) || (rcpCmd.Action == 'mtrinfo' && c.Y == cmdToAdd.Y))
+				((c.X == cmdToAdd.X && c.Y == cmdToAdd.Y) || (rcpCmd.Action == 'mtrinfo' && c.Y == cmdToAdd.Y)),
 		)
 		if (i > -1) {
 			this.cmdQueue[i] = cmdToAdd // Replace queued message with new one
@@ -282,7 +284,7 @@ class instance extends InstanceBase {
 		if (this.cmdQueue == undefined || this.cmdQueue.length == 0) return
 		if (cmd != undefined) {
 			let i = this.cmdQueue.findIndex(
-				(c) => c.prefix == 'get' && c.Address == cmd.Address && c.X == cmd.X && c.Y == cmd.Y
+				(c) => c.prefix == 'get' && c.Address == cmd.Address && c.X == cmd.X && c.Y == cmd.Y,
 			)
 			if (i > -1) {
 				this.cmdQueue.splice(i, 1) // Got value from matching request so remove it!
@@ -395,7 +397,7 @@ class instance extends InstanceBase {
 				actionId: aId,
 				options: { X: cX, Y: cY, Val: cV },
 			},
-			`${aId} ${cX} ${cY}` // uniqueId to stop duplicates
+			`${aId} ${cX} ${cY}`, // uniqueId to stop duplicates
 		)
 	}
 
@@ -404,7 +406,7 @@ class instance extends InstanceBase {
 			c = c.trim()
 			this.log(
 				'debug',
-				`[${new Date().toJSON()}] Sending :    '${c}' to ${this.getVariableValue('modelName')} @ ${config.host}`
+				`[${new Date().toJSON()}] Sending :    '${c}' to ${this.getVariableValue('modelName')} @ ${config.host}`,
 			)
 
 			if (this.socket !== undefined && this.socket.isConnected) {

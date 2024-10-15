@@ -124,7 +124,7 @@ module.exports = {
 							type: 'textinput',
 							default: rcpCmd.Default == -32768 ? '-Inf' : rcpCmd.Default / rcpCmd.Scale,
 						}
-		
+
 						paramsToAdd.push(ValOpts)
 
 						if (rcpCmd.RW.includes('r')) {
