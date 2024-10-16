@@ -178,7 +178,7 @@ class instance extends InstanceBase {
 					this.meterTimer = setInterval(() => this.startMeters(), METER_REFRESH)
 				}
 				if (config.keepAlive) {
-					this.sendCmd(`scpmode keepalive ${config.kaInterval * 1000}`) // To possibly keep the device from closing the connection
+					this.sendCmd(`scpmode keepalive ${config.kaInterval * 2000}`) // To possibly keep the device from closing the connection
 					this.kaTimer = setInterval(() => this.sendCmd('devstatus runmode'), config.kaInterval * 1000)
 				}
 			})
