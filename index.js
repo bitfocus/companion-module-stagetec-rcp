@@ -1,6 +1,6 @@
-// Control module for StageTec Pro Audio
+// Control module for StageTec Pro Audio XDIP
 // Andrew Broughton <andy@checkcheckonetwo.com>
-// Sept 2024 Version 1.0.3 (for Companion v3)
+// Sept 2024 Version 1.0.5 (for Companion v3)
 
 const { InstanceBase, InstanceStatus, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
 
@@ -65,6 +65,7 @@ class instance extends InstanceBase {
 					{ id: 'XDIP', label: 'XDIP' },
 					{ id: 'NXC-T', label: 'Nexus Compact' },
 				],
+				isVisible: () => false,
 			},
 			{
 				type: 'bonjour-device',
