@@ -19,6 +19,10 @@ _Andrew Broughton_
 
 **REVISION HISTORY**
 
+1.0.5
+
+- Fix Keep Alive, Use Node 22
+
 1.0.4
 
 - Remove unused Variables, more cleamup
