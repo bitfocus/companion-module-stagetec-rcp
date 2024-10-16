@@ -18,7 +18,7 @@ The XDIP requires an installed 'Yamaha CL/QL' control licence from Stagetec, and
 
 The Nexus Compact must be of Dante type (not Ravenna), and have the 'Yamaha CL/QL' control licence installed.
 
-In both instances it is reccomneded to locate both the Dante and Control (XACI) interfaces in the same network subnet for most reliable operation.
+In both instances it is recommended to locate both the Dante and Control (XACI) interfaces in the same network subnet for most reliable operation.
 
 **MACROS** ("Learn" Function)
 
