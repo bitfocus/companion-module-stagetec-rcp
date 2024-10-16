@@ -8,7 +8,7 @@ _Andrew Broughton, Aug 2024_
 
 **Instructions**
 
-Note that this module only works to connected hardware. This module allows control of Nexus microphone inputs (Gain, P48, HPF) routed to the dante outputs of the XDIP or NXC-T. It does not provide control of any other source type, or direct routing control. The Nexus system will dynamically route the RCP controls to whatever microphone inputs are routed to the Dante outputs.
+Note that this module only works to connected hardware. This module allows control of Nexus microphone inputs (Gain, P48, HPF) routed to the dante outputs of the XDIP or NXC-T. It does not provide control of any other source type, or direct routing control. The Nexus system will dynamically map the RCP controls to whatever microphone inputs are routed to the Dante outputs.
 
 - **XDIP**
 
@@ -18,7 +18,7 @@ The XDIP requires an installed 'Yamaha CL/QL' control licence from Stagetec, and
 
 The Nexus Compact must be of Dante type (not Ravenna), and have the 'Yamaha CL/QL' control licence installed.
 
-In both instances it is recommended to locate both the Dante and Control (XACI) interfaces in the same network subnet for most reliable operation.
+With both systems it is recommended to locate the Dante and Control (XACI) interfaces in the same subnet for most reliable operation.
 
 **MACROS** ("Learn" Function)
 
