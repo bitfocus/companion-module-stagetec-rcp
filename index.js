@@ -1,6 +1,6 @@
 // Control module for StageTec Pro Audio XDIP
 // Andrew Broughton <andy@checkcheckonetwo.com>
-// Sept 2024 Version 1.0.5 (for Companion v3)
+// October 2024 Version 1.0.5 (for Companion v3)
 
 const { InstanceBase, InstanceStatus, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
 
@@ -157,8 +157,8 @@ class instance extends InstanceBase {
 					this.meterTimer = setInterval(() => this.startMeters(), METER_REFRESH)
 				}
 
-				this.sendCmd(`scpmode keepalive ${KA_INTERVAL * 2}`) // To possibly keep the device from closing the connection
-				this.kaTimer = setInterval(() => this.sendCmd('devstatus runmode'), KA_INTERVAL)
+				this.sendCmd(`scpmode keepalive ${KA_INTERVAL * 2}`) // Tell device to close connection after 2 * KA interval without RXing any messages
+				this.kaTimer = setInterval(() => this.sendCmd('devstatus runmode'), KA_INTERVAL) // Send message on KA interval to ensure connection isn't closed
 			})
 
 			this.socket.on('data', (chunk) => {
