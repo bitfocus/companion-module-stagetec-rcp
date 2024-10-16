@@ -73,7 +73,7 @@ class instance extends InstanceBase {
 				label: 'Bonjour Address of Device',
 				width: 6,
 				default: '',
-				regex: Regex.IP,
+				regex: Regex.HOSTNAME,
 			},
 			{
 				type: 'textinput',
