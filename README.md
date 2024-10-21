@@ -23,14 +23,14 @@ _Andrew Broughton_
 
 - Fix Keep Alive, Use Node 22, Remove unnecessary config fields
 
-  1.0.4
+1.0.4
 
 - Remove unused Variables, more cleamup
 
-  1.0.1
+1.0.1
 
 - Minor Cleanup
 
-  1.0.0
+1.0.0
 
 - Initial Build
