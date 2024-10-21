@@ -1,6 +1,6 @@
-// Control module for StageTec Pro Audio
+// Control module for StageTec Pro Audio XDIP
 // Andrew Broughton <andy@checkcheckonetwo.com>
-// Sept 2024 Version 1.0.3 (for Companion v3)
+// October 2024 Version 1.0.5 (for Companion v3)
 
 const { InstanceBase, InstanceStatus, Regex, runEntrypoint, combineRgb, TCPHelper } = require('@companion-module/base')
 
@@ -12,6 +12,7 @@ const upgrades = require('./upgrades')
 const RCP_PORT = 49280
 const MSG_DELAY = 5
 const METER_REFRESH = 10000
+const KA_INTERVAL = 10000
 
 // Instance Setup
 class instance extends InstanceBase {
@@ -53,7 +54,6 @@ class instance extends InstanceBase {
 
 	// Web UI config fields
 	getConfigFields() {
-		let kaMax = 3600
 		let config = [
 			{
 				type: 'dropdown',
@@ -65,6 +65,7 @@ class instance extends InstanceBase {
 					{ id: 'XDIP', label: 'XDIP' },
 					{ id: 'NXC-T', label: 'Nexus Compact' },
 				],
+				isVisible: () => false,
 			},
 			{
 				type: 'bonjour-device',
@@ -72,7 +73,7 @@ class instance extends InstanceBase {
 				label: 'Bonjour Address of Device',
 				width: 6,
 				default: '',
-				regex: Regex.IP,
+				regex: Regex.HOSTNAME,
 			},
 			{
 				type: 'textinput',
@@ -104,28 +105,6 @@ class instance extends InstanceBase {
 				default: 100,
 				min: 40,
 				max: 1000,
-			},
-			{
-				type: 'checkbox',
-				id: 'keepAlive',
-				label: 'Enable KeepAlive?',
-				width: 3,
-				default: false,
-			},
-			{
-				type: 'number',
-				id: 'kaInterval',
-				label: `Keep Alive interval (1 - ${kaMax} seconds)`,
-				width: 8,
-				default: 10,
-				min: 1,
-				max: kaMax,
-			},
-			{
-				type: 'static-text',
-				label:
-					'**NOTE** KeepAlive will attempt to keep the connection alive by regularly sending an innocuous message to the device.',
-				width: 12,
 			},
 		]
 		return config
@@ -177,10 +156,9 @@ class instance extends InstanceBase {
 					this.startMeters()
 					this.meterTimer = setInterval(() => this.startMeters(), METER_REFRESH)
 				}
-				if (config.keepAlive) {
-					this.sendCmd(`scpmode keepalive ${config.kaInterval * 2000}`) // To possibly keep the device from closing the connection
-					this.kaTimer = setInterval(() => this.sendCmd('devstatus runmode'), config.kaInterval * 1000)
-				}
+
+				this.sendCmd(`scpmode keepalive ${KA_INTERVAL * 2}`) // Tell device to close connection after 2 * KA interval without RXing any messages
+				this.kaTimer = setInterval(() => this.sendCmd('devstatus runmode'), KA_INTERVAL) // Send message on KA interval to ensure connection isn't closed
 			})
 
 			this.socket.on('data', (chunk) => {
