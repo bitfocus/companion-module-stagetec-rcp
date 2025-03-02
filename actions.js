@@ -23,7 +23,7 @@ module.exports = {
 				id: 'X',
 				default: 1,
 				required: true,
-				useVariables: true,
+				useVariables: { local: true },
 			}
 			if (xdipChoices[actionName] !== undefined) {
 				XOpts = {
@@ -59,7 +59,7 @@ module.exports = {
 				id: 'Y',
 				default: 1,
 				required: true,
-				useVariables: true,
+				useVariables: { local: true },
 				allowCustom: true,
 			}
 			if (rcpCmd.Type == 'mtr') {

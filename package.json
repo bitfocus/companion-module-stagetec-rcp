@@ -1,6 +1,6 @@
 {
 	"name": "stagetec-rcp",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -15,14 +15,17 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"@companion-module/tools": "^2.1.0",
-		"eslint": "^9.12.0",
-		"prettier": "~3.3.3"
+		"@companion-module/tools": "^2.1.1",
+		"eslint": "^9.21.0",
+		"prettier": "~3.5.2"
 	},
 	"dependencies": {
-		"@companion-module/base": "~1.11.0",
+		"@companion-module/base": "~1.11.3",
 		"companion-module-utils": "^0.5.0"
 	},
+	"engines": {
+		"node": "^22.13"
+	},
 	"prettier": "@companion-module/tools/.prettierrc.json",
-	"packageManager": "yarn@4.5.0"
+	"packageManager": "yarn@4.6.0"
 }
